@@ -9,9 +9,15 @@
     function add(strain) {
       repository.push(strain);
     }
-    //function to return pokemon object array
+    //function to return strain object array
     function getAll() {
       return repository;
+    }
+    //function to show details of each strain
+    function showDetails(strain) {
+      strainRepository.loadDetails(strain).then(function() {
+        showModal(strain);
+      });
     }
     //function to add list for each strain
     function addListItem(strain) {
