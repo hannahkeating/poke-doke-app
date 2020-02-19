@@ -1,7 +1,7 @@
 //begins (function() {
   var pokemonRepository = (function () {
     var repository = [];
-    var apiUrl = 'strainapi.evanbusse.com/EHDvJvQ/strains/data/desc/STRAIN_ID'; //api key
+    var apiUrl = 'strainapi.evanbusse.com/EHDvJvQ/strains/search/all'; //api key
     var $strainList = $('ul');
     var $modalcontainer = $('#modal-container')
 
@@ -16,7 +16,7 @@
     //function to add list for each strain
     function addListItem(strain) {
       var $listItem = $('<li></li>');
-      var $button = $('<button type="button" class="strain-button"');
+      var $button = $('<button class="button" data-toggle="modal">' + strain.name + '</button>');
       $strainList.append($listItem);
       $listItem.append($button);
       $button.on('click', function() {
