@@ -5,7 +5,7 @@
     var $strainList = $('ul');
     var $modalcontainer = $('modal-container');
 
-    //adds new pokemon to repository
+    //adds new strain to repository
     function add(strain) {
       repository.push(strain);
     }
