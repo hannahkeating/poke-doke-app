@@ -1,9 +1,9 @@
 //begins (function() {
-  var pokemonRepository = (function () {
+  var strainRepository = (function () {
     var repository = [];
-    var apiUrl = 'strainapi.evanbusse.com/EHDvJvQ/strains/search/all'; //api key
+    var apiUrl = 'https://strainapi.evanbusse.com/EHDvJvQ/strains/search/all'; //api key
     var $strainList = $('ul');
-    var $modalcontainer = $('#modal-container')
+    var $modalcontainer = $('#modal-container');
 
     //adds new pokemon to repository
     function add(strain) {
@@ -26,24 +26,25 @@
       $strainList.append($listItem);
       $listItem.append($button);
       $button.on('click', function() {
-        showDetails(strain)
+        showDetails(strain);
       });
     }
     //function to load strain list from API
     function loadList() {
-      return $.ajax(apiUrl, {dataType: 'json'}).then(function(responseJSON) {
-        return responseJSON;
-      }).then(function(json) {
-        json.results.forEach(function(strain) {
-          var strain = {
+      return $.ajax(apiUrl, {dataType: 'json'})
+      .then(function(strain) {
+        /*Replace fetch with ajax*/
+        $.each(strain.results, function(index, strain) {
+            strain = {
             name: strain.name,
             detailsUrl: strain.url
           };
           add(strain);
         });
-      }).catch(function(e) {
-        console.error(e);
       })
+      .catch(function(error) {
+        write(error);
+      });
     }
     function loadDetails(strain) {
       var url = strain.detailsUrl;
@@ -75,7 +76,7 @@
       function hideModal() {
         $('#modal-container').removeClass('is-visible');
     }
-  })
+
 
   return {
     add: add,
