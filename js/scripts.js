@@ -60,7 +60,7 @@
     }
     //create modal
     function showModal(strain) {
-      $('#modal-container')
+      $('modal-container')
         .empty()
         .append('<div class="modal"></div>');
       $('.modal')
@@ -70,7 +70,7 @@
         .append('<p class="strain-effect"></p>')
         .append('<p class="strain-flavor"></p>');
 
-      $('#modal-container').addClass('is-visible');
+      $('modal-container').addClass('is-visible');
     }
       //function to close modal
       function hideModal() {
