@@ -3,7 +3,7 @@
     var repository = [];
     var apiUrl = 'https://strainapi.evanbusse.com/EHDvJvQ/strains/search/all'; //api key
     var $strainList = $('ul');
-    var $modalcontainer = $('#modal-container');
+    var $modalcontainer = $('modal-container');
 
     //adds new pokemon to repository
     function add(strain) {
@@ -22,7 +22,7 @@
     //function to add list for each strain
     function addListItem(strain) {
       var $listItem = $('<li></li>');
-      var $button = $('<button class="button" data-toggle="modal">' + strain.name + '</button>');
+      var $button = $('<button type="button" id="strain-button" class="button" data-toggle="modal" data-target="#modalContainer"' + strain.name + '</button>');
       $strainList.append($listItem);
       $listItem.append($button);
       $button.on('click', function() {
@@ -43,7 +43,7 @@
         });
       })
       .catch(function(error) {
-        write(error);
+        console.error(error);
       });
     }
     function loadDetails(strain) {
