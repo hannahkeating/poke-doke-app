@@ -1,7 +1,7 @@
 //begins (function() {
   var strainRepository = (function () {
     var repository = [];
-    var apiUrl = 'https://strainapi.evanbusse.com/EHDvJvQ/strains/search/all'; //api key
+    var apiUrl = 'https://strainapi.evanbusse.com/EHDvJvQ/strains/search/all'; //api
     var $strainList = $('ul');
     var $modalcontainer = $('modal-container');
 
