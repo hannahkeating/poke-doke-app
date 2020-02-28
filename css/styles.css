@@ -4,7 +4,7 @@ html, body {
   width: 100%;
   font-family: 'IBM Plex Mono', monospace;
   font-weight: 400;
-  background-color: #13375e;
+  background-color: #a5dea5;
 }
 
 * {
@@ -48,7 +48,7 @@ li {
 }
 
 button {
-  background-color: #b35b25;
+  background-color: #325931;
   color: #fff;
   width: 240px;
   height: 70px;
