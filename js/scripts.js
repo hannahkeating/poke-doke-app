@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+/*jshint esversion: 9 */
 //begins (function() {
   var strainRepository = (function () {
     var repository = [];
@@ -21,12 +23,11 @@
     function addListItem(strain) {
       var $listItem = $('<li></li>');
       var $button = $('<button type="button" id="strain-button" class="button" data-toggle="modal" data-target=".modalContainer">' + strain.name + '</button>');
+      $button.on('click', function() {
+        showDetails(strain);
+        });
       $listItem.append($button);
       $('.strain-list').append($listItem);
-
-      $button.on('click', function() {
-      showDetails(strain);
-      });
     }
     //function to load strain list from API
     function loadList() {
@@ -51,8 +52,7 @@
       var modalContainer = $('.modal-container');
       var modalTitle = $('.modal-title');
       var modalBody = $('.modal-body');
-      modalContainer.append(modalTitle);
-      modalTitle.append(modalBody);
+
       modalTitle.empty();
       modalBody.empty();
 
@@ -63,13 +63,15 @@
     //creating flavor element
     var flavorElement = $('<p>' + strain.flavor + '<p>');
     //creating effects element
-    var effectsElement = $('<p>' + strain.effects + '</P>');
+    var effectElement = $('<p>' + strain.effects + '</P>');
 
     //append modal content
     modalTitle.append(nameElement);
     modalBody.append(raceElement);
     modalBody.append(flavorElement);
-    modalBody.append(effectsElement);
+    modalBody.append(effectElement);
+    modalTitle.append(modalBody);
+    modalContainer.append(modalTitle);
     }
       //function to close modal
       //function hideModal() {

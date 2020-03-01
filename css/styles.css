@@ -57,19 +57,13 @@ button {
   text-transform: capitalize;
   border-radius: 15px;
 }
-.modal-img {
-  margin: auto;
-  display: block;
-  width: 150px;
-  height: 150px;
-}
 
 /*styling for the details of each pokemon*/
-#modal-container {
+.modal-container {
   display: none;
 }
 
-#modal-container.is-visible {
+.modal-container.is-visible {
   position: fixed;
   padding: 20px;
   box-sizing: border-box;
