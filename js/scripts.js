@@ -22,7 +22,7 @@ var pokemonRepository = (function() {
     // var button = document.createElement("button");
     // button.innerText = pokemon.name;
     // button.classList.add("my-class");
-    var $button = $('<button class="my-class">' + pokemon.name + "</button>");
+    var $button = $('<button type="button" class="btn btn-block my-class btn-blockdata-toggle="modal" data-target="#modal-container">' + pokemon.name + "</button>");
     $listItem.append($button);
     $pokemonList.append($listItem);
     $button.on("click", function(event) {
@@ -115,7 +115,7 @@ var pokemonRepository = (function() {
     $modalContainer.empty();
     //creating div element in DOM
     //adding class to div DOM element
-    var modal = $('<div class="modal"></div>');
+    var modal = $('<div class="modal fade"></div>');
     //creating closing button in modal content
     var closeButtonElement = $('<button class="modal-close">Close</button>');
     // adding event listener to close modal when clicked on button
