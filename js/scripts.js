@@ -22,7 +22,7 @@ var pokemonRepository = (function() {
     // var button = document.createElement("button");
     // button.innerText = pokemon.name;
     // button.classList.add("my-class");
-    var $button = $('<button type="button" class="btn btn-block my-class btn-blockdata-toggle="modal" data-target="#modal-container">' + pokemon.name + "</button>");
+    var $button = $('<button type="button" class="my-class btn btn-block" data-toggle="modal" data-target="#exampleModalCenter">' + pokemon.name + "</button>");
     $listItem.append($button);
     $pokemonList.append($listItem);
     $button.on("click", function(event) {
@@ -110,7 +110,7 @@ var pokemonRepository = (function() {
   }
   // show the modal content
   function showModal(item) {
-    var $modalContainer = $("#modal-container");
+    var $modalContainer = $("#exampleModalCenter");
     //clear existing content of the model
     $modalContainer.empty();
     //creating div element in DOM
@@ -147,18 +147,18 @@ var pokemonRepository = (function() {
   }
   //hides modal when clicked on close button
   function hideModal() {
-    var $modalContainer = $("#modal-container");
+    var $modalContainer = $("#exampleModalCenter");
     $modalContainer.removeClass("is-visible");
   }
   //hides modal when clicked on ESC on keyboard
   jQuery(window).on("keydown", e => {
-    var $modalContainer = $("#modal-container");
+    var $modalContainer = $("#exampleModalCenter");
     if (e.key === "Escape" && $modalContainer.hasClass("is-visible")) {
       hideModal();
     }
   });
   //hides modal if clicked outside of it
-  var $modalContainer = document.querySelector("#modal-container");
+  var $modalContainer = document.querySelector("#exampleModalCenter");
   $modalContainer.addEventListener("click", e => {
     var target = e.target;
     if (target === $modalContainer) {
