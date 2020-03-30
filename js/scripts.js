@@ -65,38 +65,10 @@ var pokemonRepository = (function() {
         for (var i = 0; i < details.types.length; i++) {
           item.types.push(details.types[i].type.name);
         }
-        if (item.types.includes("grass")) {
-          $("#modal-container").css("background-color", "#7b912b");
-        } else if (item.types.includes("fire")) {
-          $("#modal-container").css("background-color", "#7a2114");
-        } else if (item.types.includes("psychic")) {
-          $("#modal-container").css("background-color", "#6e0855");
-        } else if (item.types.includes("poison")) {
-          $("#modal-container").css("background-color", "#040505");
-        } else if (item.types.includes("water")) {
-          $("#modal-container").css("background-color", "#124963");
-        } else if (item.types.includes("bug")) {
-          $("#modal-container").css("background-color", "#c75a00");
-        } else if (item.types.includes("rock")) {
-          $("#modal-container").css("background-color", "#c7a665");
-        } else if (item.types.includes("flying")) {
-          $("#modal-container").css("background-color", "#456b42");
-        } else if (item.types.includes("electric")) {
-          $("#modal-container").css("background-color", "#c9b909");
-        } else if (item.types.includes("ice")) {
-          $("#modal-container").css("background-color", "#a1bdc9");
-        } else if (item.types.includes("ghost")) {
-          $("#modal-container").css("background-color", "#ebebeb");
-        } else if (item.types.includes("ground")) {
-          $("#modal-container").css("background-color", "#523007");
-        } else if (item.types.includes("fairy")) {
-          $("#modal-container").css("background-color", "#7a637d");
-        } else if (item.types.includes("steel")) {
-          $("#modal-container").css("background-color", "#969696");
-        }
+
         //loop to get the abilities of a selected pokemon
         item.abilities = [];
-        for (var i = 0; i < details.abilities.length; i++) {
+        for (i = 0; i < details.abilities.length; i++) {
           item.abilities.push(details.abilities[i].ability.name);
           // item.abilities.push('slot: ' + details.abilities[i].slot);
           // item.abilities.push('is_hidden: ' + details.abilities[i].is_hidden);
@@ -110,16 +82,15 @@ var pokemonRepository = (function() {
   }
   // show the modal content
   function showModal(item) {
-    var $modalContainer = $("#exampleModalCenter");
+    var $modalBody = $(".modal-body");
     //clear existing content of the model
-    $modalContainer.empty();
+    $modalBody.empty();
     //creating div element in DOM
     //adding class to div DOM element
-    var modal = $('<div class="modal fade"></div>');
-    //creating closing button in modal content
-    var closeButtonElement = $('<button class="modal-close">Close</button>');
-    // adding event listener to close modal when clicked on button
-    closeButtonElement.on("click", hideModal);
+    var $modalContent = $('<div></div>');
+    var $modalTitle = $(".modal-title");
+    //clear existing content in Title
+    $modalTitle.empty();
     //creating element for name in modal content
     var nameElement = $("<h1>" + item.name + "</h1>");
     // creating img in modal content
@@ -134,21 +105,16 @@ var pokemonRepository = (function() {
     //creating element for abilities in modal content
     var abilitiesElement = $("<p>" + "abilities : " + item.abilities + "</p>");
     //appending modal content to webpage
-    modal.append(closeButtonElement);
-    modal.append(nameElement);
-    modal.append(imageElement);
-    modal.append(heightElement);
-    modal.append(weightElement);
-    modal.append(typesElement);
-    modal.append(abilitiesElement);
-    $modalContainer.append(modal);
-    //adds class to show the modal
-    $modalContainer.addClass("is-visible");
+    $modalTitle.append(nameElement);
+    $modalContent.append(imageElement);
+    $modalContent.append(heightElement);
+    $modalContent.append(weightElement);
+    $modalContent.append(typesElement);
+    $modalContent.append(abilitiesElement);
+    $modalBody.append($modalContent);
   }
   //hides modal when clicked on close button
   function hideModal() {
-    var $modalContainer = $("#exampleModalCenter");
-    $modalContainer.removeClass("is-visible");
   }
   //hides modal when clicked on ESC on keyboard
   jQuery(window).on("keydown", e => {
@@ -183,3 +149,20 @@ pokemonRepository.loadList().then(function() {
 });
 // pokemonRepository.loadDetails();
 // pokemonRepository.loadList();
+
+//search bar functionality
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this)
+      .val()
+      .toLowerCase();
+    $("#myList *").filter(function() {
+      $(this).toggle(
+        $(this)
+          .text()
+          .toLowerCase()
+          .indexOf(value) > -1
+      );
+    });
+  });
+});
