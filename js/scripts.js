@@ -57,7 +57,7 @@ var pokemonRepository = (function() {
     return $.ajax(url)
       .then(function(details) {
         // Now we add the details to the item
-        item.imageUrl = details.sprites.front_default;
+        item.imageUrl = details.sprites.back_default;
         item.height = details.height;
         //loop for each ofthe pokemon types.
         //Also changing the background color depend on each pokemon type.
